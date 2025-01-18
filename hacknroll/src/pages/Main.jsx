@@ -17,9 +17,9 @@ export default function Main() {
         <div className="main-container">
             {!isDialogueVisible && (
                 <div>
-                    <button className="coco"></button>
+                    <button className="coco" ></button>
                     <button className="leon"></button>
-                    <button className="louis"></button>
+                    <button className="louis" onClick={() => navigate("/guess-the-breed/home")}></button>
                 </div>
             )}
 
