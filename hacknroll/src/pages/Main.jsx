@@ -38,7 +38,9 @@ export default function Main() {
                      :  leonLose === "false" ? <button className="leon"></button>
                      : <button className="leon" onClick={() => navigate("/cat-care-game/home")}></button> }
 
-                    <button className="louis"></button>
+                    {louislose === "true" ? (<img className="louismonster" src={louismonster}></img>) 
+                     :  leonLose === "false" ? <button className="louis"></button>
+                     : <button className="leon" onClick={() => navigate("/true-or-false/home")}></button> }
                 </div>
             )}
 

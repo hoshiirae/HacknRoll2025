@@ -6,6 +6,7 @@ import Title from './pages/Title';
 import GuessTheBreedHome from "./pages/guess-the-breed-game/Home";
 import CatCareHome from "./pages/cat-care-game/Home"
 import { CatProvider } from "./pages/guess-the-breed-game/CatContext";
+import TrueOrFalseHome from "./pages/true-or-false-game/Home";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
             <Route path="/Title" element={<Title/>}/>
             <Route path="/guess-the-breed/home" element={<GuessTheBreedHome />} />
             <Route path="/cat-care-game/home" element={<CatCareHome />} />
-          </Routes>
+            <Route path="/true-or-false/home" element={<TrueOrFalseHome />} />
+        </Routes>
       </CatProvider>
     </BrowserRouter>
   );

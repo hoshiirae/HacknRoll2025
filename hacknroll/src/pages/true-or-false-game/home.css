@@ -1,0 +1,136 @@
+.true-or-false-game-page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-image: url(../../images/background.jpg);
+  background-size: cover;
+}
+
+.true-or-false-game-page::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.true-or-false-top-container {
+  z-index: 2;
+
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Bagel Fat One", serif;
+  font-size: 3em;
+  text-align: center;
+  color: white;
+}
+
+.true-or-false-body-container {
+  z-index: 2;
+
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+}
+
+.true-or-false-body-container div {
+  flex: 1;
+}
+
+.true-or-false-middle-blackcat {
+  width: 100%;
+  height: auto;
+}
+
+.true-or-false-left-truecat-container,
+.true-or-false-right-truecat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.true-or-false-left-truecat-container img {
+  position: absolute;
+  bottom: -7%;
+}
+
+.true-or-false-right-truecat-container img {
+  position: absolute;
+  bottom: -11%;
+}
+.true-or-false-left-truecat-container p,
+.true-or-false-right-truecat-container p {
+  position: absolute;
+  top: 20%;
+  font-family: "Irish Grover", serif;
+  font-size: 1.5em;
+  color: white;
+}
+
+.true-or-false-blackcat-wrapper {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 3px red solid;
+}
+
+.true-or-false-blackcat-wrapper button {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Irish Grover", serif;
+  font-size: 1em;
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+.true-or-false-blackcat-wrapper button:hover {
+  background-color: #555;
+  color: yellow;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.question {
+  position: absolute;
+  font-family: "Irish Grover", serif;
+  font-size: 1.5rem;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  word-spacing: 5px;
+  width: 80%;
+}
+
+.true-or-false-left-truecat-container:hover,
+.true-or-false-right-truecat-container:hover {
+  transform: translateY(-2%);
+}
+
+
+.show-answer {
+  position: absolute;
+  font-family: "Irish Grover", serif;
+  font-size: 1rem;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  word-spacing: 5px;
+  width: 80%;
+}
