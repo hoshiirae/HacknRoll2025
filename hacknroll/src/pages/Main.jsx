@@ -13,7 +13,7 @@ export default function Main() {
 
     const [isDialogueVisible, setIsDialogueVisible] = useState(() => {
         const visibility = sessionStorage.getItem("isDialogueVisible")
-        return  visibility === "true";
+        return  visibility !== "false";
     }
     )
 
