@@ -61,7 +61,10 @@ const Home = () => {
   console.log(animals);
   return (
     <div className="adoption-page">
-      <h1 className="adoption-page-title">{breedName}</h1>
+      <div className="adoption-page-top-container">
+        {" "}
+        <h1 className="adoption-page-title">{breedName}</h1>
+      </div>
       <div className="adoption-page-profile-main-container">
         {animals.length > 0 ? (
           animals.map((animal) => (
