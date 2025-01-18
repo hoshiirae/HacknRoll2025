@@ -20,6 +20,10 @@ const Home = () => {
         <div className="true-or-false-middle-blackcat-container">
           <div className="true-or-false-blackcat-wrapper">
             <img className="true-or-false-middle-blackcat" src={blackCat}></img>
+            <p>
+              meow meow meow meow meow meow meow meow meow meow meow meow meow
+              meow
+            </p>
             <button>Next</button>
           </div>
         </div>

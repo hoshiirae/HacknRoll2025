@@ -102,6 +102,19 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 
+.true-or-false-blackcat-wrapper p {
+  position: absolute;
+  font-family: "Irish Grover", serif;
+  font-size: 1.2em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  word-spacing: 5px;
+  width: 80%;
+}
+
 .true-or-false-left-truecat-container:hover,
 .true-or-false-right-truecat-container:hover {
   transform: translateY(-2%);
