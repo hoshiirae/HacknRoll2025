@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useTypingEffect from "../../components/TypingEffect";
 import { useCatContext } from "./CatContext";
 import FactGenerator from "./FactGenerator";
+import jumpScareAudio from "../../audio/jumpscare-audio.mp3";
 import "./home.css";
 const Home = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Home = () => {
   const [isMessageVisible, setMessageVisible] = useState(false);
   const [handleNextLoseMessage, setHandleNextLoseMessage] = useState(false);
 
-  const {breed, setBreed} = useCatContext();
+  const { breed, setBreed } = useCatContext();
   const [facts, setFacts] = useState([]);
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
   const [displayFact, setDisplayFact] = useState("meow ");
@@ -35,9 +36,9 @@ const Home = () => {
   const [numberOfChances, setNumberOfChances] = useState(-1);
 
   if (isGameWon) {
-    sessionStorage.setItem("cocolose", "false")
+    sessionStorage.setItem("cocolose", "false");
   } else {
-    sessionStorage.setItem("cocolose", "true")
+    sessionStorage.setItem("cocolose", "true");
   }
 
   useEffect(() => {
@@ -48,6 +49,25 @@ const Home = () => {
       }, 3000);
 
       return () => clearTimeout(timer); //dismount
+    }
+  }, [isJumpScareActive]);
+
+  const hissSound = React.useRef(null);
+
+  React.useEffect(() => {
+    hissSound.current = new Audio(jumpScareAudio);
+    hissSound.current.preload = "auto"; // preload the audio
+    hissSound.current.volume = 1.0; // Set volume to maximum
+  }, []); // ensures this runs only once
+
+  React.useEffect(() => {
+    if (isJumpScareActive) {
+      // Stop any ongoing playback and play from the start
+      hissSound.current.pause();
+      hissSound.current.currentTime = 0; // Start from the beginning
+      hissSound.current.play().catch((err) => {
+        console.error("Audio playback failed:", err);
+      });
     }
   }, [isJumpScareActive]);
 
@@ -68,12 +88,11 @@ const Home = () => {
     const lastGuessedLetter = guessedWord[guessedWord.length - 1];
     if (lastGuessedLetter && breedArray.includes(lastGuessedLetter)) {
       if (facts.length > 0) {
-        setCurrentFactIndex((prevIndex) => (prevIndex + 1) % facts.length); 
+        setCurrentFactIndex((prevIndex) => (prevIndex + 1) % facts.length);
         setDisplayFact(facts[currentFactIndex]);
       }
     }
   }, [guessedWord]);
-  
 
   useEffect(() => {
     if (breed) {
@@ -223,17 +242,18 @@ const Home = () => {
         </div>
         <div className="guess-the-breed-home-body-right-content">
           <div className="guess-the-breed-home-body-right-content-message-wrapper">
-            <div className="guess-the-breed-home-body-right-content-messageandtext-container"></div>
-            <img
-              className="guess-the-breed-home-body-right-content-message"
-              src={messageBubble}
-            ></img>
-            <p className="guess-the-breed-home-body-right-content-text">
-              {displayFact}
-            </p>
+            <div className="guess-the-breed-home-body-right-content-messageandtext-container">
+              <img
+                className="guess-the-breed-home-body-right-content-message"
+                src={messageBubble}
+              ></img>
+              <p className="guess-the-breed-home-body-right-content-text">
+                {displayFact}
+              </p>
+            </div>
           </div>
 
-          <FactGenerator setFacts={setFacts}/>
+          <FactGenerator setFacts={setFacts} />
 
           <div className="guess-the-breed-home-body-right-content-letterslot-container">
             {!loading &&

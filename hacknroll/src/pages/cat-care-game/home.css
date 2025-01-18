@@ -1,191 +1,215 @@
 .cat-care {
-    display: flex;
-    justify-content: center;
-    background-image: url("../../images/background.jpg");
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    font-family: "Irish Grover", serif;
+  display: flex;
+  justify-content: center;
+  background-image: url("../../images/background.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  font-family: "Irish Grover", serif;
 }
 
 .cat-care::before {
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: 1;
-    content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+  content: "";
 }
 
 .instructions-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    z-index: 150;
-    content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 150;
+  content: "";
 }
 
 .instructions {
-    position: fixed;
-    z-index: 100;
-    background-color: #fff2ea;
-    width: 50%;
-    height: 60%;
-    border-radius: 50px;
-    border: 4px solid #ffcdad;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
+  position: fixed;
+  z-index: 100;
+  background-color: #fff2ea;
+  width: 50%;
+  height: 60%;
+  border-radius: 50px;
+  border: 4px solid #ffcdad;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .instructions button {
-    font-size: 1.2em;
-    font-family: "Irish Grover", serif;
-    border-radius: 30px;
-    width: 25%;
-    height: 13%;
-    background-color: rgba(0, 0, 0, 0.12); /* Semi-transparent background */
-    border: none;
+  font-size: 1.2em;
+  font-family: "Irish Grover", serif;
+  border-radius: 30px;
+  width: 25%;
+  height: 13%;
+  background-color: rgba(0, 0, 0, 0.12); /* Semi-transparent background */
+  border: none;
 }
 
 .instructions p {
-    font-size: 1.2em;
-    text-align: center;
-    margin: 0;
-    align-self: center;
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0;
+  align-self: center;
 }
 
 .main {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .cat-care-questions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    background-color: #fff2ea;
-    width: 70%;
-    height: 40%;
-    border-radius: 20px;
-    border: 4px solid #ffcdad;
-    top: 5%;
-    z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background-color: #fff2ea;
+  width: 70%;
+  height: 40%;
+  border-radius: 20px;
+  border: 4px solid #ffcdad;
+  top: 5%;
+  z-index: 100;
 }
 
 .cat-care-questions {
-    display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 5%;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 5%;
 }
 
 .cat-care-questions p {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .cat-care-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 10vw;
-    margin-bottom: 3%;
-    z-index: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10vw;
+  margin-bottom: 3%;
+  z-index: 100;
 }
 
 .leon-option {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url("../../images/leon.png");
-    background-size: contain;
-    width: 300px;
-    height: 250px;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    font-family: "Irish Grover", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../images/leon.png");
+  background-size: contain;
+  width: 300px;
+  height: 250px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  font-family: "Irish Grover", serif;
 }
 
 .leon-option:hover {
-    width: 310px;
-    height: 260px;
+  width: 310px;
+  height: 260px;
 }
 
 .leon-option::after {
-    content: attr(data-option);
-    display: none; 
-    position: absolute;
-    bottom: 95%; 
-    right: 60%;
-    width: 40vw; 
-    height: 50%; 
-    background: url(../../images/messageflipped.png) no-repeat center;
-    background-size: contain;
-    z-index: 50;
-    color: #000;
-    font-size: 1.5rem;
-    text-align: center;
+  content: attr(data-option);
+  display: none;
+  position: absolute;
+  bottom: 95%;
+  right: 60%;
+  width: 40vw;
+  height: 50%;
+  background: url(../../images/messageflipped.png) no-repeat center;
+  background-size: contain;
+  z-index: 50;
+  color: #000;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .leon-option:hover::after {
-    display: block; 
+  display: block;
 }
 
 .coco-option {
-    background: url("../../images/coco.png");
-    background-size: contain;
-    width: 320px;
-    height: 250px;
-    border: none;
-    position: relative;
+  background: url("../../images/coco.png");
+  background-size: contain;
+  width: 320px;
+  height: 250px;
+  border: none;
+  position: relative;
 }
 
 .coco-option:hover {
-    width: 340px;
-    height: 260px;
+  width: 340px;
+  height: 260px;
 }
 
 .louis-option {
-    background: url("../../images/louis.png");
-    background-size: contain;
-    width: 300px;
-    height: 250px;
-    border: none;
-    position: relative;
+  background: url("../../images/louis.png");
+  background-size: contain;
+  width: 300px;
+  height: 250px;
+  border: none;
+  position: relative;
 }
 
-.louis-option:hover{
-    width: 310px;
-    height: 260px;
+.louis-option:hover {
+  width: 310px;
+  height: 260px;
 }
 
-.louis-option::after, 
+.louis-option::after,
 .coco-option::after {
-    content: attr(data-option);
-    display: none; 
-    position: absolute;
-    bottom: 95%; 
-    left: 30%;
-    width: 40vw; 
-    height: 50%; 
-    background: url(../../images/message.png) no-repeat center;
-    background-size: contain;
-    z-index: 50;
-    color: #000;
-    font-size: 1.5rem;
-    text-align: center;
-    font-family: "Irish Grover", serif;
+  content: attr(data-option);
+  display: none;
+  position: absolute;
+  bottom: 95%;
+  left: 30%;
+  width: 40vw;
+  height: 50%;
+  background: url(../../images/message.png) no-repeat center;
+  background-size: contain;
+  z-index: 50;
+  color: #000;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Irish Grover", serif;
 }
 
-.louis-option:hover::after, 
+.louis-option:hover::after,
 .coco-option:hover::after {
-    display: block; 
+  display: block;
+}
+
+.jump-scare-overlay {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.jump-scare-image {
+  width: 100%;
+  height: 100%;
+  animation: zoomIn 10s ease-in forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(2);
+  }
+}
+
+.message-button:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
 }
