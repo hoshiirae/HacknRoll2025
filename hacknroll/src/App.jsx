@@ -11,24 +11,28 @@ import CompatabilityQuiz from "./pages/compatability-quiz/Home";
 import Test from "./pages/compatability-quiz/components/CatBreeds";
 import AdoptionPageHome from "./pages/adoption-page/Home";
 import CompatabilityAi from "./pages/compatability-quiz/CompatabilityAi";
+import { QuizProvider } from "./pages/compatability-quiz/QuizContext";
+
 
 function App() {
   return (
     <BrowserRouter>
       <CatProvider>
-        <Routes>
-            <Route path="/" element={<Title/>}/>
-            <Route path="/Main" element={<Main/>}/>
-            <Route path="/Title" element={<Title/>}/>
-            <Route path="/guess-the-breed/home" element={<GuessTheBreedHome />} />
-            <Route path="/cat-care-game/home" element={<CatCareHome />} />
-            <Route path="/true-or-false/home" element={<TrueOrFalseHome />} />
-            <Route path="/adoption-page/home" element={<AdoptionPageHome />} />
-            <Route path="/compatability-quiz/home" element={<CompatabilityQuiz />}/>
-            <Route path="/test" element={<Test />} />
-            <Route path="/test2" element={<CompatabilityAi />} />
-            
-        </Routes>
+        <QuizProvider>
+          <Routes>
+              <Route path="/" element={<Title/>}/>
+              <Route path="/Main" element={<Main/>}/>
+              <Route path="/Title" element={<Title/>}/>
+              <Route path="/guess-the-breed/home" element={<GuessTheBreedHome />} />
+              <Route path="/cat-care-game/home" element={<CatCareHome />} />
+              <Route path="/true-or-false/home" element={<TrueOrFalseHome />} />
+              <Route path="/adoption-page/home" element={<AdoptionPageHome />} />
+              <Route path="/compatability-quiz/home" element={<CompatabilityQuiz />}/>
+              <Route path="/test" element={<Test />} />
+              <Route path="/compatability-ai" element={<CompatabilityAi />} />
+              
+          </Routes>
+        </QuizProvider>
       </CatProvider>
     </BrowserRouter>
   );

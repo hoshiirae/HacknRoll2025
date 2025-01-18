@@ -1,24 +1,27 @@
 import { useEffect } from 'react';
 import CatBreeds from './components/CatBreeds';
+import { useQuiz } from "./QuizContext";
 
 const CompatabilityAi = ({ getBreed }) => {
 
+    const { quizState } = useQuiz();
     const catBreed = CatBreeds()
 
-    console.log(quizState)
-    console.log(catBreed)
+    const SYSTEM_PROMPT = `You are an assistant that matches quiz answers to a list of cat breeds to find the perfect match based on personality and preferences:
+        1. Use the provided "quizState" (answers to personality and preference questions) to determine the best match.
+        2. Use the provided "catBreed" (list of available cat breeds) for the matching process.
+        3. Match the breed by analyzing the traits and preferences described in "quizState".
+        4. Return ONLY the name of the breed in JSON format as a one-word response. Do not include any explanation or additional text.
+        5. Example response:
+        {
+            "breed" : "Ragdoll"
+        }
 
-    const SYSTEM_PROMPT = `You are an assistant creating true/false cat facts questions:
-        - Each question is <=30 words
-        - Provide answers as "True" or "False"
-        - Output only a JSON array: 
-        [
-        "Question", "True", "Reason its True"
-        "Question", "False", "Reason its False"
-        ...
-        ].`;
-
-  
+        Data for Matching:
+        - quizState: ${JSON.stringify(quizState, null, 2)}
+        - catBreed: ${JSON.stringify(catBreed)}
+            
+        Find the best match.`;
 
   const fetchQn = async () => {
     try {
@@ -32,7 +35,7 @@ const CompatabilityAi = ({ getBreed }) => {
           messages: [
             {
               role: "user",
-              content: `${SYSTEM_PROMPT}\n\nGenerate 5 true/false questions about cats- in JSON format.`,
+              content: `${SYSTEM_PROMPT}\n\n Find me my perfect cat breed.`,
             },
           ],
           max_tokens: 300,
@@ -56,13 +59,12 @@ const CompatabilityAi = ({ getBreed }) => {
       const QnResponse = JSON.parse(content); // Parse the text as JSON
       console.log("Received Questions (raw):", QnResponse);
 
-      const formattedQuestions = [];
-      for (let i = 0; i < QnResponse.length; i += 3) {
-        formattedQuestions.push([QnResponse[i], QnResponse[i + 1], QnResponse[i + 2]]);
-      }
-      console.log("Transformed Questions:", formattedQuestions);
+      const breedName = QnResponse.breed; // Access the breed property
+      console.log("Extracted Breed:", breedName);
 
-      setQns(formattedQuestions); // Pass the transformed questions to setQns
+      getBreed(breedName);
+      sessionStorage.setItem("breed", breedName)
+
     } catch (error) {
       console.error("Error fetching cat questions:", error);
     }
@@ -72,9 +74,6 @@ const CompatabilityAi = ({ getBreed }) => {
     fetchQn();
   }, []);
 
-  return (
-    <h1>try</h1>
-  )
 };
 
 export default CompatabilityAi;

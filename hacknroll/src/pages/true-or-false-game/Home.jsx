@@ -86,7 +86,7 @@ const Home = () => {
             <p className="question">
               {qns[currentQnIndex]?.[0]}
             </p>
-            {showAns && <p className="show-answer"> Ans: {showAns}</p>}
+            {showAns && <p className="show-answer"> Ans: {qns[currentQnIndex]?.[1]}. {showAns}</p>}
 
             {answered && (
               <button onClick={handleNextQuestion}>Next</button> 
