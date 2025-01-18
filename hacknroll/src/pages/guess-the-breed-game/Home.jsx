@@ -7,6 +7,8 @@ import CatImage from "./components/CatImage";
 import monsterCat from "../../images/cocomonster.png";
 import { useNavigate } from "react-router-dom";
 import useTypingEffect from "../../components/TypingEffect";
+import { useCatContext } from "./CatContext";
+import FactGenerator from "./FactGenerator";
 import "./home.css";
 const Home = () => {
   const navigate = useNavigate();
@@ -19,7 +21,10 @@ const Home = () => {
   const [isMessageVisible, setMessageVisible] = useState(false);
   const [handleNextLoseMessage, setHandleNextLoseMessage] = useState(false);
 
-  const [breed, setBreed] = useState("");
+  const {breed, setBreed} = useCatContext();
+  const [facts, setFacts] = useState([]);
+  const [currentFactIndex, setCurrentFactIndex] = useState(0);
+  const [displayFact, setDisplayFact] = useState("meow ");
   const breedArray = breed.split("");
 
   const [alphabet, setAlphabet] = useState("abcdefghijklmnopqrstuvwxyz");
@@ -28,6 +33,12 @@ const Home = () => {
   const [guessedWord, setGuessedWord] = useState([]);
 
   const [numberOfChances, setNumberOfChances] = useState(-1);
+
+  if (isGameWon) {
+    sessionStorage.setItem("cocolose", "false")
+  } else {
+    sessionStorage.setItem("cocolose", "true")
+  }
 
   useEffect(() => {
     if (isJumpScareActive) {
@@ -52,6 +63,17 @@ const Home = () => {
         : false
       : null;
   }
+
+  useEffect(() => {
+    const lastGuessedLetter = guessedWord[guessedWord.length - 1];
+    if (lastGuessedLetter && breedArray.includes(lastGuessedLetter)) {
+      if (facts.length > 0) {
+        setCurrentFactIndex((prevIndex) => (prevIndex + 1) % facts.length); 
+        setDisplayFact(facts[currentFactIndex]);
+      }
+    }
+  }, [guessedWord]);
+  
 
   useEffect(() => {
     if (breed) {
@@ -87,7 +109,7 @@ const Home = () => {
   const catTurnedMonsterText = useTypingEffect(
     "Oh no... one of the kittens has transformed into a monster! 😿 It's a tragic turn of events. Can you save the rest before it’s too late?",
     35,
-    isJumpScareActive
+    isMessageVisible
   );
 
   const doYouHearSmthText = useTypingEffect(
@@ -207,14 +229,17 @@ const Home = () => {
               src={messageBubble}
             ></img>
             <p className="guess-the-breed-home-body-right-content-text">
-              meow meow meow meow meow meow meow meow meow meow meow meow
+              {displayFact}
             </p>
           </div>
+
+          <FactGenerator setFacts={setFacts}/>
+
           <div className="guess-the-breed-home-body-right-content-letterslot-container">
             {!loading &&
-              breedArray.map((current) => (
+              breedArray.map((current, index) => (
                 <LetterSlot
-                  key={current}
+                  key={`${current} - ${index}`}
                   letter={current}
                   isLetterGuessed={isSelectedLetterCorrect(current)}
                   numberOfChances={numberOfChances}

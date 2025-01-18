@@ -22,6 +22,14 @@
     height: 240px;
 }
 
+.cocomonster {
+    position: absolute;
+    width: 300px;
+    height: 230px;
+    margin-top: 11%;
+    margin-left: 40%;
+}
+
 .leon {
     position: absolute;
     width: 300px;
@@ -36,6 +44,14 @@
 .leon:hover{
     width: 310px;
     height: 240px;
+}
+
+.leonmonster {
+    position: absolute;
+    width: 300px;
+    height: 230px;
+    margin-top: 25%;
+    margin-left: 5%;
 }
 
 .louis {

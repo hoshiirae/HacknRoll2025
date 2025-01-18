@@ -5,17 +5,20 @@ import Main from './pages/Main';
 import Title from './pages/Title';
 import GuessTheBreedHome from "./pages/guess-the-breed-game/Home";
 import CatCareHome from "./pages/cat-care-game/Home"
+import { CatProvider } from "./pages/guess-the-breed-game/CatContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Title/>}/>
-        <Route path="/Main" element={<Main/>}/>
-        <Route path="/Title" element={<Title/>}/>
-        <Route path="/guess-the-breed/home" element={<GuessTheBreedHome />} />
-        <Route path="/cat-care-game/home" element={<CatCareHome />} />
-      </Routes>
+      <CatProvider>
+        <Routes>
+            <Route path="/" element={<Title/>}/>
+            <Route path="/Main" element={<Main/>}/>
+            <Route path="/Title" element={<Title/>}/>
+            <Route path="/guess-the-breed/home" element={<GuessTheBreedHome />} />
+            <Route path="/cat-care-game/home" element={<CatCareHome />} />
+          </Routes>
+      </CatProvider>
     </BrowserRouter>
   );
 }

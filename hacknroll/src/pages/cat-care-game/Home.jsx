@@ -1,8 +1,12 @@
 import './home.css'
 import { useState } from "react"
 import QuestionGenerator from './QuizGenerator'
+import useTypingEffect from '../../components/TypingEffect'
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
+
+    const navigate = useNavigate()
 
     const [gameStart, setGameStart] = useState(false)
     const [qns, setQns] = useState([])
@@ -11,9 +15,9 @@ export default function Home() {
     const [gameEnd, setGameEnd] = useState(false)
 
 
-    const instructions = ( "Test your knowledge about caring for cats by answering 5 multiple-choice questions, each with 3 options to choose from. Take your time, think carefully, and have fun learning about the best ways to care for your feline friends! Good luck!")
-    const win = (`Congratulations! Your score is ${score}/5! You've saved a cat! Good job! `)
-    const lose = (`Your score is ${score}/5...You've saved a cat! Good job! `)
+    const instructions = useTypingEffect( "Test your knowledge about caring for cats by answering 5 multiple-choice questions, each with 3 options to choose from. Take your time, think carefully, and have fun learning about the best ways to care for your feline friends! Good luck!")
+    const win = useTypingEffect(`Congratulations! Your score is ${score}/5! You've saved a cat! Good job! `, 35, gameEnd)
+    const lose = useTypingEffect(`Your score is ${score}/5...So close! `, 35, gameEnd)
 
     const handleAnswer = (selected) => {
         if (qns[currentQnIndex][4] === selected) {
@@ -25,6 +29,12 @@ export default function Home() {
         } else {
             setGameEnd(true)
         }
+    }
+
+    if (score < 3) {
+        sessionStorage.setItem("leonLose", "true")
+    } else {
+        sessionStorage.setItem("leonLose", "false")
     }
 
     return (
@@ -72,8 +82,18 @@ export default function Home() {
                 <div className='instructions-overlay'>
                 <div className='instructions'>
                     <h1>Stage Cleared!</h1>
-                    <p>{instructions}</p>
-                    <button onClick={() => setGameStart(true)}>Start</button>
+                    <p>{win}</p>
+                    <button onClick={() => navigate('/Main')}>Next</button>
+                </div>
+            </div>
+            )}
+
+            {gameEnd && score < 3 && (
+                <div className='instructions-overlay'>
+                <div className='instructions'>
+                    <h1>Aw man...</h1>
+                    <p>{lose}</p>
+                    <button onClick={() => navigate('/Main')}>Next</button>
                 </div>
             </div>
             )}
