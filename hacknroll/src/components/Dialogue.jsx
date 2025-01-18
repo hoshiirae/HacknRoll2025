@@ -29,11 +29,11 @@ const Dialogue = ({dialogue, onClose}) => {
           <div className="dialogue-box">
             <h2>{currentDialogue.character}</h2>
             <p>{currentDialogue.text}</p>
-            
-            {currentDialogue.id === 1 ? null : <button onClick={handlePrevious}>{'<<'}</button>}
+          </div>
+          
+          {currentDialogue.id === 1 ? null : <button onClick={handlePrevious}>{'<<'}</button>}
             {currentDialogue.id === 6 ? <button onClick={onClose}>{'Close'}</button> : 
                 <button onClick={handleNext}>{'>>'}</button>}
-          </div>
         </div>
       );
 };
