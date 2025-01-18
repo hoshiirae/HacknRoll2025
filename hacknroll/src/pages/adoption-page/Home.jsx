@@ -2,13 +2,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AdoptionProfile from "./components/AdoptionProfile";
 import "./home.css";
+import useTypingEffect from "../../components/TypingEffect";
 
 const Home = () => {
   const [animals, setAnimals] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const breedName = "Abyssinian";
+  const [startAdoption, setStartAdoption] = useState(false);
 
+  const fullInstruction = useTypingEffect(
+    `Congratulations on proving your cat care skills! You've shown that you have what it takes to provide love and care for our feline friends. 🌟
+
+    Here, you'll find adorable cats looking for their forever homes. Take your time to learn about each one and make a choice that will change both your life and theirs. ❤️🐾`,
+    35
+  );
   const fetchBreedDetails = async () => {
     try {
       setLoading(true);
@@ -61,6 +69,20 @@ const Home = () => {
   console.log(animals);
   return (
     <div className="adoption-page">
+      {!startAdoption && (
+        <div className="adoption-beginning-message-overlay">
+          <div className="adoption-beginning-message">
+            <h1>Welcome to the Cat Adoption Page!</h1>
+            <p>{fullInstruction}</p>
+            <button
+              className="adoption-beginning-button"
+              onClick={() => setStartAdoption(true)}
+            >
+              Start
+            </button>
+          </div>
+        </div>
+      )}
       <div className="adoption-page-top-container">
         {" "}
         <h1 className="adoption-page-title">{breedName}</h1>

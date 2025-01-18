@@ -12,6 +12,55 @@
   position: relative;
 }
 
+.adoption-beginning-message-overlay {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Align content at the top */
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 150;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.adoption-beginning-message {
+  font-family: "Irish Grover", serif;
+
+  z-index: 100;
+  background-color: #fff2ea;
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  border: 4px solid #ffcdad;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.2em;
+}
+.adoption-beginning-button {
+  font-size: 1.2em;
+  font-family: "Irish Grover", serif;
+  border-radius: 30px;
+  width: 25%;
+  height: 13%;
+  background-color: rgba(0, 0, 0, 0.12); /* Semi-transparent background */
+  border: none;
+}
+
+.adoption-beginning-button:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+}
+
 .adoption-page::before {
   content: "";
   width: 100%;
