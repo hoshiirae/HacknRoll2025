@@ -1,0 +1,43 @@
+.title-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: linear-gradient(to right, #dfebfd, #faefd9);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 500px;
+    height: 150px;
+    margin-bottom: 100px;
+}
+
+.start-button, .start-button-hovered {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 2px;
+    transition: opacity 0.3s ease;
+}
+
+.start-button-hovered{
+    opacity: 0;
+}
+
+.buttons:hover .start-button {
+    opacity: 0;
+}
+
+.buttons:hover .start-button-hovered {
+    opacity: 1;
+}
+

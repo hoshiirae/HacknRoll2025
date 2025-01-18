@@ -33,12 +33,14 @@ const Home = () => {
     if (currentQuestionNumber === quizState.length - 1) setCompletedQuiz(true);
   }, [currentQuestionNumber]);
 
+
   const fullInstruction = useTypingEffect(
     `Welcome to the Cat Compatibility Quiz!  <br>
     This quiz is designed to help you discover which cat breed best fits your lifestyle and preferences. <br> Read each question carefully and select the option that best describes your preference. <br>
     Let's MEOWWW!`,
     35
   );
+
   return (
     <div className="compatability-quiz-page">
       {!startGame && (

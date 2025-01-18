@@ -44,16 +44,7 @@ const CatBreeds = () => {
     return <p>{error}</p>;
   }
 
-  return (
-    <div>
-      <h1>Cat Breeds</h1>
-      <ul>
-        {breeds.map((breed) => (
-          <li key={breed.name}>{breed.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
+  return breeds;
 };
 
 export default CatBreeds;
