@@ -85,8 +85,8 @@ const Home = () => {
   );
 
   const catTurnedMonsterText = useTypingEffect(
-    "Oh no... one of the kittens has transformed into a monster! 😿 It's a tragic turn of events. Can you save the rest before it’s too late?",
-    35,
+    `Oh no...one of the kittens has transformed into a monster! 😿 It's a tragic turn of events. Can you save the rest before it's too late?`,
+    70,
     isJumpScareActive
   );
 
