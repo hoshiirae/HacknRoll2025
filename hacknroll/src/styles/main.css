@@ -1,6 +1,8 @@
 .main-container {
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: flex-end;  
     background-image: url('../images/background.jpg');
     background-size: cover;
     width: 100vw;
