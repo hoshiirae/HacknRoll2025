@@ -20,6 +20,14 @@ const Home = () => {
     console.log(guessedWord);
   }
 
+  function isSelectedLetterCorrect(letter) {
+    guessedWord.includes(current)
+      ? breedArray.includes(current)
+        ? true
+        : false
+      : null;
+  }
+
   return (
     <div className="guess-the-breed-home-page">
       <p className="guess-the-breed-home-title">Guess the breed</p>
@@ -44,21 +52,22 @@ const Home = () => {
             ))}
           </div>
           <div className="guess-the-breed-home-body-right-content-keyboard-container">
-            {" "}
-            {alphabetArray.map((current) => (
-              <Keyboard
-                key={current}
-                letter={current}
-                onClick={handleKeyboardClick}
-                isSelectedCorrect={
-                  guessedWord.includes(current)
-                    ? breedArray.includes(current)
-                      ? true
-                      : false
-                    : null
-                }
-              />
-            ))}
+            <div className="guess-the-breed-home-body-right-content-keyboard-wrapper">
+              {alphabetArray.map((current) => (
+                <Keyboard
+                  key={current}
+                  letter={current}
+                  onClick={handleKeyboardClick}
+                  isSelectedCorrect={
+                    guessedWord.includes(current)
+                      ? breedArray.includes(current)
+                        ? true
+                        : false
+                      : null
+                  }
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
