@@ -21,6 +21,82 @@
   z-index: 1;
 }
 
+.guess-the-breed-beginning-message-overlay,
+.guess-the-breed-ending-message-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guess-the-breed-beginning-message,
+.guess-the-breed-ending-message-lose,
+.guess-the-breed-ending-message-win {
+  position: fixed;
+  z-index: 100;
+  background-color: #fff2ea;
+  width: 50%;
+  height: 60%;
+  border-radius: 50px;
+  border: 4px solid #ffcdad;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-family: "Irish Grover", serif;
+}
+
+.guess-the-breed-beginning-message h1,
+.guess-the-breed-ending-message-lose h1 {
+  font-size: 2em;
+}
+
+.guess-the-breed-beginning-message p,
+.guess-the-breed-ending-message-lose p {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0;
+  align-self: center;
+}
+
+.guess-the-breed-beginning-button,
+.guess-the-breed-end-button-lose,
+.guess-the-breed-end-button-win {
+  font-size: 1.2em;
+  font-family: "Irish Grover", serif;
+  border-radius: 30px;
+  width: 25%;
+  height: 13%;
+  background-color: rgba(0, 0, 0, 0.12); /* Semi-transparent background */
+  border: none;
+}
+
+.guess-the-breed-beginning-button:hover,
+.guess-the-breed-end-button-lose:hover,
+.guess-the-breed-end-button-win:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+}
+
+.jump-scare-image {
+  width: 100vw;
+  height: auto;
+  animation: zoomIn 0.7s ease-in forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(2);
+  }
+}
+
 .guess-the-breed-home-title {
   z-index: 2;
   width: 100%;
@@ -47,7 +123,6 @@
   overflow: hidden;
   height: 100%;
   width: 100%;
-  padding-bottom: 2px;
 }
 
 .guess-the-breed-home-body-right-content-message-container {
@@ -100,6 +175,7 @@
   top: 0;
   left: 0;
   transform: translate(20px, 20px);
+  font-family: "Irish Grover", serif;
 }
 
 .guess-the-breed-home-body-right-content-message {
