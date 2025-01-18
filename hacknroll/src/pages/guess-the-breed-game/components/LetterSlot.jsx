@@ -19,7 +19,10 @@ const LetterSlot = (props) => {
           fontFamily: "Bagel Fat One",
         }}
       >
-        {props.letter}
+        {props.isLetterGuessed ||
+        (props.numberOfChances === 0 && props.loading === false)
+          ? props.letter
+          : ""}
       </p>
     </div>
   );
