@@ -1,18 +1,27 @@
-import {useState} from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import blackCat from "../../images/mainCat.png";
 import trueCat from "../../images/cat-true-paw.png";
 import falseCat from "../../images/cat-false-paw.png";
 import "./home.css";
 import QuestionGenerator from "./QuestionGenerator";
+import useTypingEffect from "../../components/TypingEffect";
 
 const Home = () => {
+
+  const navigate = useNavigate()
 
   const [score, setScore] = useState(0)
   const [qns, setQns] = useState([])
   const [currentQnIndex, setCurrentQnIndex] = useState(0)
   const [isGameOver, setIsGameOver] = useState(false)
   const [showAns, setShowAns] = useState("")
-  const [answered, setAnswered] = useState(false); 
+  const [answered, setAnswered] = useState(false)
+  const [gameStart, setGameStart] = useState(false) 
+
+  const instructions = useTypingEffect("Test your knowledge about our feline friends by deciding whether each statement is true or false. Simply click on the true paw or false paw to select your answer. Good Luck!")
+  const win = useTypingEffect(`Meow! Your score is ${score}/5! You saved a cat! Well done and keep it up!`, 50, isGameOver)
+  const lose = useTypingEffect(`Oh meow...Your score is ${score}/5...`, 50, isGameOver)
 
   const handleAnswer = (playerAnswer) => {
     const currentQn = qns[currentQnIndex]
@@ -39,9 +48,26 @@ const Home = () => {
     }
   };
 
+  if (score < 3) {
+      sessionStorage.setItem("louislose", "true")
+  } else {
+      sessionStorage.setItem("louislose", "false")
+  }
+
 
   return (
     <div className="true-or-false-game-page">
+
+      {!gameStart && (
+          <div className='instructions-overlay'>
+              <div className='instructions'>
+                  <h1>Instructions</h1>
+                  <p>{instructions}</p>
+                  <button onClick={() => setGameStart(true)}>Start</button>
+              </div>
+          </div>
+      )}
+
       <div className="true-or-false-top-container">
         <p>
           The Cat's Tale <br /> Fact or Fiction?
@@ -78,6 +104,27 @@ const Home = () => {
           <img src={falseCat}></img>
         </div>
       </div>
+
+      {isGameOver && score >= 3 && (
+          <div className='instructions-overlay'>
+          <div className='instructions'>
+              <h1>Stage Cleared!</h1>
+              <p>{win}</p>
+              <button onClick={() => navigate('/Main')}>Next</button>
+          </div>
+      </div>
+      )}
+
+      {isGameOver && score < 3 && (
+          <div className='instructions-overlay'>
+          <div className='instructions'>
+              <h1>Aw man...</h1>
+              <p>{lose}</p>
+              <button onClick={() => navigate('/Main')}>Next</button>
+          </div>
+      </div>
+      )}
+
     </div>
   );
 };

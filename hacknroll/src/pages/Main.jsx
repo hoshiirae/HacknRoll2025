@@ -13,7 +13,7 @@ export default function Main() {
 
     const [isDialogueVisible, setIsDialogueVisible] = useState(() => {
         const visibility = sessionStorage.getItem("isDialogueVisible")
-        return visibility !== "false"
+        return  visibility === "true";
     }
     )
 
@@ -22,7 +22,7 @@ export default function Main() {
         sessionStorage.setItem("isDialogueVisible", "false")
     };
 
-    const leonLose = sessionStorage.getItem("leonLose")
+    const leonlose = sessionStorage.getItem("leonLose")
     const cocolose = sessionStorage.getItem("cocolose")
     const louislose = sessionStorage.getItem("louislose")
 
@@ -34,13 +34,13 @@ export default function Main() {
                      :  cocolose === "false" ? <button className="coco"></button>
                      : <button className="coco" onClick={() => navigate("/guess-the-breed/home")}></button> }
 
-                    {leonLose === "true" ? (<img className="leonmonster" src={leonmonster}></img>) 
-                     :  leonLose === "false" ? <button className="leon"></button>
+                    {leonlose === "true" ? (<img className="leonmonster" src={leonmonster}></img>) 
+                     :  leonlose === "false" ? <button className="leon"></button>
                      : <button className="leon" onClick={() => navigate("/cat-care-game/home")}></button> }
 
                     {louislose === "true" ? (<img className="louismonster" src={louismonster}></img>) 
-                     :  leonLose === "false" ? <button className="louis"></button>
-                     : <button className="leon" onClick={() => navigate("/true-or-false/home")}></button> }
+                     :  louislose === "false" ? <button className="louis"></button>
+                     : <button className="louis" onClick={() => navigate("/true-or-false/home")}></button> }
                 </div>
             )}
 
