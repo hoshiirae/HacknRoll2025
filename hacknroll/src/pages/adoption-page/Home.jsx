@@ -8,7 +8,7 @@ const Home = () => {
   const [animals, setAnimals] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const breedName = "Abyssinian";
+  const breedName = sessionStorage.getItem("breed");
   const [startAdoption, setStartAdoption] = useState(false);
 
   const fullInstruction = useTypingEffect(

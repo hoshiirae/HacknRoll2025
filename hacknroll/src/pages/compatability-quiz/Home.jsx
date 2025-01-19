@@ -3,10 +3,17 @@ import "./home.css";
 import McqOptions from "./components/McqOptions";
 import quizList from "./quizList.js";
 import useTypingEffect from "../../components/TypingEffect";
+import { useNavigate } from "react-router-dom";
+import { useQuiz } from "./QuizContext";
+import CompatabilityAi from "./CompatabilityAi.jsx";
 
 const Home = () => {
+
+  const navigate = useNavigate()
+
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
-  const [quizState, setQuizState] = useState(quizList);
+  const [breed, setBreed] = useState("")
+  const { quizState, setQuizState } = useQuiz();
   const [startGame, setStartGame] = useState(false);
   const [completedQuiz, setCompletedQuiz] = useState(false);
 
@@ -30,9 +37,10 @@ const Home = () => {
   }
 
   useEffect(() => {
+    if (quizState.length === 0) 
+      setQuizState(quizList);
     if (currentQuestionNumber === quizState.length - 1) setCompletedQuiz(true);
   }, [currentQuestionNumber]);
-
 
   const fullInstruction = useTypingEffect(
     `Welcome to the Cat Compatibility Quiz!  <br>
@@ -61,19 +69,27 @@ const Home = () => {
         </div>
       )}
       <div className="compatability-quiz-header">
-        <p className="compatability-quiz-header-question-number">
-          {`Question ${currentQuestionNumber + 1}/${quizState.length}`}
-        </p>
-        <p className="compatability-quiz-header-question">
-          {quizState[currentQuestionNumber].question}
-        </p>
+        {quizState.length > 0 && currentQuestionNumber < quizState.length ? (
+          <>
+            <p className="compatability-quiz-header-question-number">
+              {`Question ${currentQuestionNumber + 1}/${quizState.length}`}
+            </p>
+            <p className="compatability-quiz-header-question">
+              {quizState[currentQuestionNumber].question}
+            </p>
+          </>
+        ) : (
+          <p>Loading...</p> // Handle the loading state
+        )}
       </div>
+
 
       <hr></hr>
       <div className="compatability-quiz-mcq-section">
         <button onClick={handleBackButton}>{"<"}</button>
         <div className="compatability-quiz-mcq-container">
-          {quizState[currentQuestionNumber].options.map((current, index) => (
+        {quizState.length > 0 && quizState[currentQuestionNumber] ? (
+          quizState[currentQuestionNumber].options.map((current, index) => (
             <McqOptions
               key={current}
               questionNo={index + 1}
@@ -81,19 +97,28 @@ const Home = () => {
               onClick={saveSelectedOption}
               isSelected={
                 quizState[currentQuestionNumber].userAnswer === current
-                  ? true
-                  : false
               }
             />
-          ))}
+          ))
+        ) : (
+          <p>Loading options...</p>
+        )}
         </div>
         <button onClick={handleNextButton}>{">"}</button>
       </div>
       {completedQuiz && (
         <div className="compatability-quiz-bottom-container">
-          <button className="submit-button">Submit</button>
+              <button className="submit-button" onClick={() => navigate('/adoption-page/home')}>
+                Submit
+              </button>
         </div>
       )}
+
+      {completedQuiz && (
+        <CompatabilityAi getBreed={setBreed}/>
+      )}
+
+      
     </div>
   );
 };

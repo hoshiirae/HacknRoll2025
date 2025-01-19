@@ -145,8 +145,10 @@ const Home = () => {
         <div className="true-or-false-middle-blackcat-container">
           <div className="true-or-false-blackcat-wrapper">
             <img className="true-or-false-middle-blackcat" src={blackCat}></img>
-            <p className="question">{qns[currentQnIndex]?.[0]}</p>
-            {showAns && <p className="show-answer"> Ans: {showAns}</p>}
+            <p className="question">
+              {qns[currentQnIndex]?.[0]}
+            </p>
+            {showAns && <p className="show-answer"> Ans: {qns[currentQnIndex]?.[1]}. {showAns}</p>}
 
             {answered && <button onClick={handleNextQuestion}>Next</button>}
           </div>

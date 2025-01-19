@@ -28,7 +28,7 @@ const Dialogue = ({ dialogue, onClose }) => {
 
       <div className="dialogue-box">
         <h2>{currentDialogue.character}</h2>
-        <p>{currentDialogue.text}</p>
+        <p className="text-container">{currentDialogue.text}</p>
       </div>
 
       {currentDialogue.id === 1 ? null : (

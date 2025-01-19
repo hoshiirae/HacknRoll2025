@@ -1,5 +1,8 @@
 .main-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   background-image: url("../images/background.jpg");
   background-size: cover;
   width: 100vw;
@@ -11,8 +14,8 @@
   position: absolute;
   width: 300px;
   height: 230px;
-  margin-top: 9%;
-  margin-left: 40%;
+  top: 20%;
+  left: 40%;
   background: url("../images/coco.png");
   background-size: cover;
   border: none;
@@ -27,16 +30,16 @@
   position: absolute;
   width: 300px;
   height: 230px;
-  margin-top: 11%;
-  margin-left: 40%;
+  top: 20%;
+  left: 40%;
 }
 
 .leon {
   position: absolute;
   width: 300px;
   height: 230px;
-  margin-top: 25%;
-  margin-left: 5%;
+  top: 50%;
+  left: 10%;
   background: url("../images/leonbox.png");
   background-size: cover;
   border: none;
@@ -51,16 +54,16 @@
   position: absolute;
   width: 300px;
   height: 230px;
-  margin-top: 25%;
-  margin-left: 5%;
+  top: 50%;
+  left: 10%;
 }
 
 .louis {
   position: absolute;
   width: 300px;
   height: 260px;
-  margin-top: 16%;
-  margin-left: 60%;
+  top: 30%;
+  left: 60%;
   background: url("../images/louisball.png");
   background-size: cover;
   border: none;
@@ -72,8 +75,56 @@
 }
 
 .louismonster {
+  position: absolute;
   width: 300px;
   height: 260px;
-  margin-top: 16%;
-  margin-left: 60%;
+  top: 30%;
+  left: 60%;
+}
+
+.win-text-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 150;
+  content: "";
+}
+
+.win-text {
+  position: fixed;
+  z-index: 100;
+  background-color: #fff2ea;
+  width: 50%;
+  height: 60%;
+  border-radius: 50px;
+  border: 4px solid #ffcdad;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-family: "Irish Grover", serif;
+}
+
+.win-text button {
+  font-size: 1.2em;
+  font-family: "Irish Grover", serif;
+  border-radius: 30px;
+  width: 25%;
+  height: 13%;
+  background-color: rgba(0, 0, 0, 0.12); /* Semi-transparent background */
+  border: none;
+  font-family: "Irish Grover", serif;
+}
+
+.win-text p {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0;
+  align-self: center;
+  font-family: "Irish Grover", serif;
 }

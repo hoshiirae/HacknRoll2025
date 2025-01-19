@@ -1,7 +1,7 @@
 .title-page {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     background: linear-gradient(to right, #dfebfd, #faefd9);
     width: 100vw;
     height: 100vh;
@@ -16,9 +16,9 @@
     outline: none;
     border: none;
     cursor: pointer;
-    width: 500px;
-    height: 150px;
-    margin-bottom: 100px;
+    width: 800px;
+    height: 250px;
+    margin-top: 10%;
 }
 
 .start-button, .start-button-hovered {
