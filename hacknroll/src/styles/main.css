@@ -1,78 +1,79 @@
 .main-container {
-    position: relative;
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
+  position: relative;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .coco {
-    position: absolute;
-    width: 300px;
-    height: 230px;
-    margin-top: 9%;
-    margin-left: 40%;
-    background: url('../images/coco.png');
-    background-size: cover;
-    border: none;
+  position: absolute;
+  width: 300px;
+  height: 230px;
+  margin-top: 9%;
+  margin-left: 40%;
+  background: url("../images/coco.png");
+  background-size: cover;
+  border: none;
 }
 
-.coco:hover{
-    width: 310px;
-    height: 240px;
+.coco:hover {
+  width: 310px;
+  height: 240px;
 }
 
 .cocomonster {
-    position: absolute;
-    width: 300px;
-    height: 230px;
-    margin-top: 11%;
-    margin-left: 40%;
+  position: absolute;
+  width: 300px;
+  height: 230px;
+  margin-top: 11%;
+  margin-left: 40%;
 }
 
 .leon {
-    position: absolute;
-    width: 300px;
-    height: 230px;
-    margin-top: 25%;
-    margin-left: 5%;
-    background: url('../images/leonbox.png');
-    background-size: cover;
-    border: none;
+  position: absolute;
+  width: 300px;
+  height: 230px;
+  margin-top: 25%;
+  margin-left: 5%;
+  background: url("../images/leonbox.png");
+  background-size: cover;
+  border: none;
 }
 
-.leon:hover{
-    width: 310px;
-    height: 240px;
+.leon:hover {
+  width: 310px;
+  height: 240px;
 }
 
 .leonmonster {
-    position: absolute;
-    width: 300px;
-    height: 230px;
-    margin-top: 25%;
-    margin-left: 5%;
+  position: absolute;
+  width: 300px;
+  height: 230px;
+  margin-top: 25%;
+  margin-left: 5%;
 }
 
 .louis {
-    position: absolute;
-    width: 300px;
-    height: 260px;
-    margin-top: 16%;
-    margin-left: 60%;
-    background: url('../images/louisball.png');
-    background-size: cover;
-    border: none;
+  position: absolute;
+  width: 300px;
+  height: 260px;
+  margin-top: 16%;
+  margin-left: 60%;
+  background: url("../images/louisball.png");
+  background-size: cover;
+  border: none;
 }
 
-.louis:hover{
-    width: 310px;
-    height: 270px;
+.louis:hover {
+  width: 310px;
+  height: 270px;
 }
 
 .louismonster {
-    width: 300px;
-    height: 260px;
-    margin-top: 16%;
-    margin-left: 60%;
+  width: 300px;
+  height: 260px;
+  margin-top: 16%;
+  margin-left: 60%;
 }
