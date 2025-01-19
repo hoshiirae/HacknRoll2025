@@ -234,11 +234,13 @@ const Home = () => {
       <p className="guess-the-breed-home-title">Guess the breed</p>
       <div className="guess-the-breed-home-body">
         <div className="guess-the-breed-home-body-left-content">
-          <CatImage
-            setLoading={setLoading}
-            setWord={setBreed}
-            loading={loading}
-          />
+          <div className="guess-the-breed-home-body-left-cat-img-container">
+            <CatImage
+              setLoading={setLoading}
+              setWord={setBreed}
+              loading={loading}
+            />
+          </div>
         </div>
         <div className="guess-the-breed-home-body-right-content">
           <div className="guess-the-breed-home-body-right-content-message-wrapper">
