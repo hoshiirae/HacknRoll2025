@@ -7,6 +7,8 @@ const CompatabilityAi = ({ getBreed }) => {
     const { quizState } = useQuiz();
     const catBreed = CatBreeds()
 
+    console.log(catBreed)
+
     const SYSTEM_PROMPT = `You are an assistant that matches quiz answers to a list of cat breeds to find the perfect match based on personality and preferences:
         1. Use the provided "quizState" (answers to personality and preference questions) to determine the best match.
         2. Use the provided "catBreed" (list of available cat breeds) for the matching process.
@@ -16,6 +18,8 @@ const CompatabilityAi = ({ getBreed }) => {
         {
             "breed" : "Ragdoll"
         }
+        6. If no perfect match is found, select the closest match from the catBreed array.
+        7. You MUST NOT return breeds that are outside of the provided catBreed array.
 
         Data for Matching:
         - quizState: ${JSON.stringify(quizState, null, 2)}
